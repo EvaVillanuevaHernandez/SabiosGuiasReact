@@ -1,28 +1,54 @@
-import { useEffect } from 'react';
+
 import "./Header.scss";
-import variables from "./Header.scss";
+import { useState } from 'react';
+import "./Header.scss";
 
-export default function Header() {
-
-  useEffect(() => {
-    document.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
-      const headerMaxHeight = variables.headerMaxHeight * 16;
-      const newHeaderHeight = scrollY < headerMaxHeight / 2 ? Math.round(headerMaxHeight - scrollY) : headerMaxHeight / 2;
-      document.documentElement.style.setProperty("--header-height", `${newHeaderHeight}px`);
-    });
-  }, []);
+export default function Navbar() {
+  const [isNavExpanded, setIsNavExpanded] = useState(false)
 
   return (
-    <>
-      <header className="header">
-        <div className="header-logos">
-          <img src="/img/San-Cristobal-CIFP.logo_.png" alt="CIFP San Cristóbal" />
-          <img src="/img/LogoIESElRincon-transparent.png" alt="IES El Rincón" />
-          <img src="/img/LogoSabiosGuias-Inverso.png" alt="Sabios Guías Intérpretes" />
-        </div>
-      </header>
-      <hr />
-    </>
+
+    <nav className="navigation" >
+      <a href="/" className="brand-name">
+        Sabios Guías
+      </a>
+
+      <button className="hamburger"
+        onClick={() => {
+          setIsNavExpanded(!isNavExpanded);
+        }}
+      >
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="white"
+        >
+          <path
+            fillRule="evenodd"
+            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+            clipRule="evenodd"
+          />
+        </svg>
+
+      </button>
+      <div className={
+        isNavExpanded ? "navigation-menu expanded" : "navigation-menu"
+      }
+      >
+        <ul>
+          <li>
+            <a href="/home">Inicio</a>
+          </li>
+          <li>
+            <a href="../all-Routes">Rutas</a>
+          </li>
+          <li>
+            <a href="../route-detail">Detalles</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 }

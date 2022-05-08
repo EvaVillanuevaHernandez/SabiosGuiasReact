@@ -7,6 +7,9 @@ import {
 import Video360 from "./pages/Video360";
 import AllRoutes from "./pages/AllRoutes";
 import RouteDetail from "./pages/RouteDetail";
+import Home from "./pages/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   return (
@@ -15,10 +18,10 @@ function App() {
         <Route path="/route-detail/:id" element={<RouteDetail />} />
         <Route path="/all-routes" element={<AllRoutes />} />
         <Route path="/video-360/:route/:stop" element={<Video360 />} />
-        <Route path="/" element={<AllRoutes />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/*" element={<Home />} />
       </Routes>
     </Router>
   );
 }
-
-export default App;
+export default App
