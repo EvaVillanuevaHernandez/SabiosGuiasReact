@@ -45,7 +45,7 @@ export default function Navbar() {
             <a href="../all-Routes">Rutas</a>
           </li>
           <li>
-            <a href="../route-detail">Detalles</a>
+            <a href="../video-360/:route/:stop">Video VR</a>
           </li>
         </ul>
       </div>
